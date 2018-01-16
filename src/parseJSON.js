@@ -8,6 +8,7 @@ var parseJSON = function(json) {
     var outputArray = [];
     var wordPlaceholder = '';
     var outerQuote = true;
+    var isTrue = 'true';
     for (var i = 1; i < stringArr.length; i++) {
       // console.log(stringArr[i]);
       if ((stringArr[i] === ',' && outerQuote === true ) || i === stringArr.length - 1 ) {
@@ -26,7 +27,8 @@ var parseJSON = function(json) {
         wordPlaceholder += stringArr[i];
       }
     }
-    
     return outputArray;
   };
 };
+
+//instead of +=1 on line 22 check for space
