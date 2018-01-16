@@ -8,9 +8,15 @@ var parseJSON = function(json) {
     var outputArray = [];
     var wordPlaceholder = '';
     var outerQuote = true;
-    for (var i = 1; i < stringArr.length - 1; i++) {
-      if ((stringArr[i] === ',' && outerQuote === true ) || i === stringArr.length - 2 ) {
-        outputArray.push(wordPlaceholder);
+    for (var i = 1; i < stringArr.length; i++) {
+      // console.log(stringArr[i]);
+      if ((stringArr[i] === ',' && outerQuote === true ) || i === stringArr.length - 1 ) {
+        if (isNaN(wordPlaceholder)) {
+          outputArray.push(wordPlaceholder);
+          
+        } else {
+          outputArray.push(+wordPlaceholder);
+        }
         wordPlaceholder = '';
         i += 1;
         changeValue(outerQuote);
@@ -20,7 +26,7 @@ var parseJSON = function(json) {
         wordPlaceholder += stringArr[i];
       }
     }
-
+    
     return outputArray;
   };
 };
